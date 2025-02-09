@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            overflow-y: auto;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+        #happy {
+            display: none;
+            margin-top: 20px;
+        }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: #ff4d4d;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff0f5;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 3s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi San Valentín? ❤️</h1>
+        <button class="btn yes" onclick="aceptar()">Sí</button>
+        <button class="btn no" onmouseover="moverNo()" id="no">No</button>
+        <div id="happy">
+            <img src="https://imgs.search.brave.com/qZh2dOblaLse-GTZ5-imdLgLoTMOs2lygrx26E8LNJQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFRMExHa2FtOUwu/anBn" alt="Osito con flores" width="250">
+        </div>
+        <div id="message">
+            Mi amor. ❤️<br><br>
+            No sabes lo feliz que me haces con tu respuesta. Desde que llegaste a mi vida, cada día tiene más luz, más color y más amor. No hay instante en el que no agradezca por tenerte, por amarte y por sentir que este amor que compartimos es lo más hermoso que me ha pasado.<br><br>
+            Este San Valentín será especial porque estarás a mi lado, porque no hay nadie más en el mundo con quien quisiera compartir mis días, mis sueños y mi corazón. Gracias por ser mi todo, por hacerme sentir el ser más afortunado, por cada sonrisa, cada abrazo y cada "te amo" que sale de tus labios. 💕<br><br>
+            Hoy, más que nunca, quiero prometerte que haré todo para verte feliz, para cuidarte, para amarte como mereces. Porque tú eres mi amor, mi vida, mi para siempre. 💖<br><br>
+            ¡Feliz San Valentín, mi niña hermosa! ✨🌹  
+        </div>
+    </div>
+
+    <script>
+        function aceptar() {
+            document.getElementById('happy').style.display = 'block';
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('no').style.display = 'none';
+            localStorage.setItem('respuestaSanValentin', 'Sí');
+            lanzarCorazones();
+        }
+        
+        function moverNo() {
+            let x = Math.random() * window.innerWidth * 0.8;
+            let y = Math.random() * window.innerHeight * 0.8;
+            document.getElementById('no').style.left = x + 'px';
+            document.getElementById('no').style.top = y + 'px';
+        }
+        
+        function lanzarCorazones() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
